@@ -12,10 +12,15 @@ repositories {
 }
 
 dependencies {
-    compile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.0'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter', version: '5.7.0'
 }
 
 compileJava {
     options.encoding("UTF-8")
     options.release = 8
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -1,8 +1,8 @@
 package com.richard.algorithm.test;
 
 import com.richard.algorithm.Leetcode953;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author YaoXiansheng
@@ -13,7 +13,7 @@ public class Leetcode953Test {
     @Test
     public void testCase() {
         Leetcode953 code = new Leetcode953();
-        Assert.assertTrue(code.isAlienSorted(new String[]{"hello", "leetcode"}, "hlabcdefgijkmnopqrstuvwxyz"));
-        Assert.assertFalse(code.isAlienSorted(new String[]{"word", "world", "row"}, "worldabcefghijkmnpqstuvxyz"));
+        Assertions.assertTrue(code.isAlienSorted(new String[]{"hello", "leetcode"}, "hlabcdefgijkmnopqrstuvwxyz"));
+        Assertions.assertFalse(code.isAlienSorted(new String[]{"word", "world", "row"}, "worldabcefghijkmnpqstuvxyz"));
     }
 }
