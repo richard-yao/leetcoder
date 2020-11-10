@@ -50,17 +50,15 @@ public class Leetcode131 {
      * @param segments
      */
     public void dfs(String targetStr, int start, List<String> segments, boolean[][] cache) {
-        if(start == targetStr.length()) {
-            if(segments.size() > 0) {
-                // 这里是为了防止回溯时由于使用同一个引用导致的数据修改
-                RESULT.add(new ArrayList<>(segments));
-            }
+        int n = targetStr.length();
+        if(start == n) {
+            // 这里是为了防止回溯时由于使用同一个引用导致的数据修改
+            RESULT.add(new ArrayList<>(segments));
             return;
         }
-        for(int end = start; end < targetStr.length(); end++) {
-            String substr = targetStr.substring(start, end + 1);
+        for(int end = start; end < n; end++) {
             if(cache[start][end]) {
-                segments.add(substr);
+                segments.add(targetStr.substring(start, end + 1));
                 dfs(targetStr, end + 1, segments, cache);
                 // 处理完的case回溯，重新处理
                 segments.remove(segments.size() - 1);
