@@ -1,19 +1,18 @@
 package com.richard.algorithm.offer;
 
+import lombok.Getter;
+
 /**
  * @author yaoxs@shukun.net
  */
 public class Offer06 {
 
     public static class ListNode {
+        @Getter
         int val;
         ListNode next;
         ListNode(int x) {
             val = x;
-        }
-
-        public int getVal() {
-            return val;
         }
     }
 
