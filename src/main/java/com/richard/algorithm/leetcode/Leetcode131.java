@@ -1,4 +1,4 @@
-package com.richard.algorithm;
+package com.richard.algorithm.leetcode;
 
 import java.util.ArrayList;
 import java.util.List;

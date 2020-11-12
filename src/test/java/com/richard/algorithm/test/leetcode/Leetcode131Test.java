@@ -1,6 +1,6 @@
-package com.richard.algorithm.test;
+package com.richard.algorithm.test.leetcode;
 
-import com.richard.algorithm.Leetcode131;
+import com.richard.algorithm.leetcode.Leetcode131;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
