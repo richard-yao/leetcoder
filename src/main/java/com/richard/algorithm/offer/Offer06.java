@@ -11,8 +11,18 @@ public class Offer06 {
         ListNode(int x) {
             val = x;
         }
+
+        public int getVal() {
+            return val;
+        }
     }
 
+    /**
+     * 循环创建单链表
+     *
+     * @param array
+     * @return
+     */
     public ListNode generateFromArray(int[] array) {
         if(array.length == 0) {
             return null;
@@ -30,6 +40,29 @@ public class Offer06 {
             }
             return head;
         }
+    }
+
+    public ListNode generateWithArrayRecursive(int[] array) {
+        if(array.length == 0) {
+            return null;
+        }
+        return generateRecursive(array, 0);
+    }
+
+    /**
+     * 递归创建单链表
+     *
+     * @param array
+     * @param index
+     * @return
+     */
+    public ListNode generateRecursive(int[] array, int index) {
+        if(index == array.length) {
+            return null;
+        }
+        ListNode listNode = new ListNode(array[index]);
+        listNode.next = generateRecursive(array, index + 1);
+        return listNode;
     }
 
     /**
@@ -61,7 +94,7 @@ public class Offer06 {
     }
 
     /**
-     * 从队尾遍历，直接赋值给数组
+     * 从队尾遍历，直接赋值给数组，这个是效率最高的方式
      *
      * @param head
      * @return
@@ -79,5 +112,50 @@ public class Offer06 {
             temp = temp.next;
         }
         return result;
+    }
+
+    /**
+     * 反转单链表, 循环处理
+     *
+     * @param node
+     * @return
+     */
+    public ListNode reverseListNode(ListNode node) {
+        ListNode before = null, next = null;
+        while(node != null) {
+            // 暂存node.next节点引用
+            next = node.next;
+            // node.next节点指向前置节点
+            node.next = before;
+            // before与next节点后移
+            before = node;
+            node = next;
+        }
+        return before;
+    }
+
+    /**
+     * 反转单链表，递归处理
+     *
+     * @param node
+     * @return
+     */
+    public ListNode reverseListNodeWithRecursive(ListNode node) {
+        // 倘若当前节点是最后一个，返回
+        if(node.next == null) {
+            return node;
+        }
+        // 递归处理下一个节点
+        ListNode newNode = reverseListNodeWithRecursive(node.next);
+        // 当前节点的下一个节点的next指针指向当前节点，相当于节点指向反转
+        node.next.next = node;
+        // 当前节点的next指针重置
+        node.next = null;
+        // 返回包括node.next节点的新节点
+        return newNode;
+        // 代码运行时处理逻辑
+        // 1 -> 2 -> 3, return 3
+        // 3 -> 2, 2 -> null, return 3
+        // 2 -> 1, 1 -> null, return 3
     }
 }
