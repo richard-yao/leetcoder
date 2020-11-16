@@ -1,6 +1,6 @@
 package com.richard.algorithm.offer;
 
-public class Offer12 {
+public class Offer10_2 {
 
     /**
      * dp数组缓存中间结果

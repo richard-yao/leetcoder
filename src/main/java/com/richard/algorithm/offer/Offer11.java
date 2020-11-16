@@ -3,20 +3,26 @@ package com.richard.algorithm.offer;
 public class Offer11 {
 
     /**
-     * dp数组缓存斐波那契数列的前项结果
+     * 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。输入一个递增排序的数组的一个旋转，输出旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一个旋转，该数组的最小值为1。
+     *
+     * @param numbers
+     * @return
      */
-    private final int[] dpArray = new int[101];
-
-    public int fib(int n) {
-        if(n < 2) {
-            return n;
+    public int minArray(int[] numbers) {
+        if(numbers.length < 2) {
+            return numbers[0];
         }
-        if(dpArray[n] > 0) {
-            return dpArray[n];
+        int low = 0, high = numbers.length - 1;
+        while(low < high) {
+            int mid = low + ((high - low) >> 1);
+            if(numbers[mid] < numbers[high]) {
+                high = mid;
+            } else if(numbers[mid] > numbers[high]) {
+                low = mid + 1;
+            } else {
+                high -= 1;
+            }
         }
-        int result = fib(n - 1) + fib(n - 2);
-        result = result % 1000000007;
-        dpArray[n] = result;
-        return result;
+        return numbers[low];
     }
 }
